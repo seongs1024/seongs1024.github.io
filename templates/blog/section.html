@@ -1,0 +1,79 @@
+{% extends "section.html" %}
+
+{% block body %}
+  {% set page_class = "blog list" %}
+{% endblock body %}
+
+{% block header %}
+  {# This value is matched by the config.extra.menu.main->section #}
+  {% set current_section = "blog" %}
+  {{ macros_header::header(current_section=current_section)}}
+{% endblock header %}
+
+{% block content %}
+<div class="container px-4 py-5" id="custom-cards">
+  <h2 class="pb-2 border-bottom">Custom cards</h2>
+
+  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="images/paul_smith_16_cropped.png" class="img-fluid rounded-start" alt="...">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="wrap container" role="document">
+  <div class="content">
+    <div class="row justify-content-center">
+      <div class="col-md-14 col-lg-12 col-xxl-10">
+        <article>
+          <h1 class="text-center">{{ section.title }}</h1>
+          <div class="card-list">
+            {% for page in paginator.pages %}
+            <div class="card">
+              <div class="row">
+                <div class="col">
+                  <div class="card-body">
+                    <h2 class="h3"><a class="stretched-link text-body" href="{{ page.permalink }}">{{ page.title }}</a></h2>
+                    {% if page.extra.lead %}
+                      <p class="lead">{{ page.extra.lead | safe }}</p>{% elif page.description %}<p class="lead">{{ page.description | safe }}</p>
+                    {% endif %}
+                    {{ macros_publish::page_publish_metadata(page=page) }}
+                    {% if page.extra.tags %}
+                    <div class="d-flex flex-wrap">
+                      {% for tag in page.extra.tags %}
+                      <div class="text-primary me-3">#{{ tag }}</div>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+                {% if page.extra.images %}
+                <div class="d-none d-md-block col-md-5">
+                  <img src="{{ page.extra.images[0] }}" class="d-block mx-lg-auto img-fluid rounded-start" alt="..." loading="lazy">
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+            {% if paginator.previous or paginator.next %}
+              {{ macros_section_nav::navigation(paginator=paginator) }}
+            {% endif %}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
