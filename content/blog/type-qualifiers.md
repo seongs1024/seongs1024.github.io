@@ -4,7 +4,7 @@ description = "역할을 제한하기 위한 용도로 사용"
 date = 2022-03-02T07:00:00+09:00
 updated = 2022-03-02T00:00:00+09:00
 template = "blog/page.html"
-draft = true
+draft = false
 
 [taxonomies]
 authors = ["Seongsu Park"]
@@ -26,7 +26,7 @@ toc = true
 
 그래서 찾아 보았다.
 
-## 한정자(Type qualifiers)
+## <cite>한정자(Type qualifiers)[^qualifier]</cite>
 
 영어로는 자격을 주는 것 같은데, 한글로는 뭔가를 제한하는 느낌이다.
 
@@ -36,12 +36,11 @@ toc = true
 
 뭘? 익숙한 `const` 한정자부터 보면 
 
-> 1. `const`: 데이터의 변경권을 제한한다.[^한정자참고]
 
-> 2. `volatile`: 컴파일러의 최적화를 제한한다.
-
-> 3. `restrict`: 데이터에 접근 할 수있는 변수를 제한한다.
+1. `const`: 데이터의 변경권을 제한한다.
+2. `volatile`: 컴파일러의 최적화를 제한한다.
+3. `restrict`: 데이터에 접근 할 수있는 변수를 제한한다.
 
 ## 참고문헌
 
-[^한정자참고] [12.18 자료형 한정자들(Type Qualifiers)-const, volatile, restrict | cuore J](https://m.blog.naver.com/cuorej/221688482474)
+[^qualifier]: [12.18 자료형 한정자들(Type Qualifiers)-const, volatile, restrict | cuore J](https://m.blog.naver.com/cuorej/221688482474)

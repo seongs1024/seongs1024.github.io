@@ -18,9 +18,9 @@ toc = true
 
 규모가 큰 함수는 여러 하위 함수로 기능을 나눌 수가 있는데, 하위 함수가 불필요하게 라이브러리에 배포되는 것을 막기 위한 방법으로 `static` 키워드를 사용할 수 있다.
 
-## 정적함수(Static functions)
+## <cite>정적함수(Static functions)[^static]</cite>
 
-정적함수는 선언된 파일 안에서만 사용할 수 있도록 접근 권한이 제한된다.[^스태틱참고]
+정적함수는 선언된 파일 안에서만 사용할 수 있도록 접근 권한이 제한된다.
 
 따라서 아래처럼 정적함수로 정의된 함수를 다른 c 파일에서 사용할 수 없다.
 
@@ -45,4 +45,4 @@ int main(void)
 
 ## 참고문헌
 
-[^스태틱참고] [Static functions in C | GeeksforGeeks](https://www.geeksforgeeks.org/what-are-static-functions-in-c/)
+[^static]: [Static functions in C | GeeksforGeeks](https://www.geeksforgeeks.org/what-are-static-functions-in-c/)
