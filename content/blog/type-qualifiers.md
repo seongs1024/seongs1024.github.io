@@ -41,6 +41,54 @@ toc = true
 2. `volatile`: 컴파일러의 최적화를 제한한다.
 3. `restrict`: 데이터에 접근 할 수있는 변수를 제한한다.
 
+## <cite>[`restrict`](https://dojang.io/mod/page/view.php?id=760)[^restrict]</cite>
+
+`restrict` 키워드가 있다면 `a`, `b`, `x`가 모두 다르다는 것을 명시하는 것이다. (하지만 세 변수가 같은 곳을 가리킨다고 컴파일 오류가 나지 않기 때문에 사람이 일일이 확인해줘야 한다.) 포인터가 가리키는 곳이 모두 다르다면 아래와 같은 함수에서 각 명령의 순서는 바뀌어도 상관없다. 과연 빌드했을 때 프로그램은 우리가 의도한 대로 동작할까?
+
+```c
+void increase(int *restrict a, int *restrict b, int *restrict x)
+{
+    *a += *x;
+    *b *= *x;
+}
+```
+```c
+int v = 5;
+increase(&v, &v, &v);
+```
+```shell
+$ gcc -std=c99 -O3 -c increase.c
+$ ./increase
+50
+```
+
+놀랍다. `5 + 5 = 10` 하고 난 뒤 `10 * 10 = 100` 이어야 하는데 결과는 `50` 이다. 아무래도 컴파일러 최적화로 인해서 `5 * 5 = 25`, `25 + 25 = 50` 로 순서가 바뀐 것 같다.
+
+그렇다면 `restrict` 키워드를 제거하고 빌드 하면 어떻게 될까?
+
+```c
+void increase(int * a, int * b, int * x)
+{
+    *a += *x;
+    *b *= *x;
+}
+```
+```c
+int v = 5;
+increase(&v, &v, &v);
+```
+```shell
+$ gcc -std=c99 -O3 -c increase.c
+$ ./increase
+100
+```
+
+우리가 의도한 대로 결과가 나왔다.
+
+`restrict` 키워드를 사용할 때 정말 해당 키워드의 데이터 접근 권한이 제한되었는지 확인할 필요가 있을 것 같다. 이를 하지 않는다면 위와 같은 오류가 생길 수도 있으니 사용에 주의하자.
+
 ## 참고문헌
 
 [^qualifier]: [12.18 자료형 한정자들(Type Qualifiers)-const, volatile, restrict | cuore J](https://m.blog.naver.com/cuorej/221688482474)
+
+[^restrict]: [85.16 restrict 포인터 | 코딩도장](https://dojang.io/mod/page/view.php?id=760)
