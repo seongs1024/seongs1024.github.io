@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://seongs1024.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://seongs1024.github.io/blog/</loc>
+    </url>
+    <url>
+        <loc>https://seongs1024.github.io/blog/makefile/</loc>
+        <lastmod>2022-03-03T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://seongs1024.github.io/blog/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://seongs1024.github.io/blog/static-functions/</loc>
+        <lastmod>2022-03-02T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://seongs1024.github.io/blog/thread-safe-and-async-cancel-safe/</loc>
+        <lastmod>2022-03-07T15:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://seongs1024.github.io/blog/type-qualifiers/</loc>
+        <lastmod>2022-03-02T00:00:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://seongs1024.github.io/blog/will-type-casting-impact-on-the-execution-performance/</loc>
+        <lastmod>2022-03-05T00:00:00+09:00</lastmod>
+    </url>
+</urlset>

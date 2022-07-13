@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seongs1024.github.io//sitemap.xml
